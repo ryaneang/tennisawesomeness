@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#102d35" />
+    <title>Baseline Swipe</title>
+  </head>
+  <body>
+    <main id="app">
+      <canvas id="game" aria-label="Baseline Swipe tennis court"></canvas>
+      <div class="grain" aria-hidden="true"></div>
+
+      <header class="topbar">
+        <button class="brand" id="homeButton" aria-label="Return to menu">
+          <span class="brand-mark">B</span>
+          <span>BASELINE<br /><b>SWIPE</b></span>
+        </button>
+        <div class="top-actions">
+          <button class="icon-button" id="soundButton" aria-label="Toggle sound">♪</button>
+          <button class="icon-button hidden" id="pauseButton" aria-label="Pause game">Ⅱ</button>
+        </div>
+      </header>
+
+      <section class="scoreboard hidden" id="scoreboard" aria-live="polite">
+        <div class="score-side player-score"><span>YOU</span><strong id="playerScore">0</strong></div>
+        <div class="serve-indicator" id="serveIndicator">YOUR SERVE</div>
+        <div class="score-side ai-score"><strong id="aiScore">0</strong><span>RIVAL</span></div>
+      </section>
+
+      <section class="screen menu-screen" id="menuScreen">
+        <div class="menu-copy">
+          <p class="eyebrow">SWIPE. SPIN. WIN.</p>
+          <h1>OWN THE<br /><em>BASELINE.</em></h1>
+          <p class="intro">Arcade tennis built around one satisfying gesture. Aim with your angle. Shape the ball with your swipe.</p>
+          <div class="difficulty" role="group" aria-label="Difficulty">
+            <button data-difficulty="easy">EASY</button>
+            <button class="active" data-difficulty="medium">MEDIUM</button>
+            <button data-difficulty="hard">HARD</button>
+          </div>
+          <button class="primary-button" id="playButton">PLAY MATCH <span>→</span></button>
+          <button class="text-button" id="howButton">HOW TO PLAY</button>
+        </div>
+        <div class="menu-card">
+          <div class="gesture-demo">
+            <span class="demo-ball"></span>
+            <span class="demo-line"></span>
+            <span class="demo-arrow">⌃</span>
+          </div>
+          <b>SWIPE UP</b><span>TOPSPIN</span>
+          <div class="card-divider"></div>
+          <b>SWIPE DOWN</b><span>SLICE</span>
+        </div>
+      </section>
+
+      <section class="screen overlay-screen hidden" id="howScreen">
+        <div class="panel how-panel">
+          <p class="eyebrow">THE BASICS</p>
+          <h2>ONE SWIPE.<br />EVERY SHOT.</h2>
+          <div class="how-grid">
+            <div><i>↖</i><b>TOPSPIN</b><span>Swipe upward. Angle left or right to place it.</span></div>
+            <div><i>↘</i><b>SLICE</b><span>Swipe downward for a low, floating ball.</span></div>
+            <div><i>↔</i><b>POWER</b><span>Long, fast gestures hit harder and deeper.</span></div>
+            <div><i>●</i><b>SERVE</b><span>Tap to toss, then swipe at the top.</span></div>
+          </div>
+          <button class="primary-button" id="gotItButton">GOT IT</button>
+        </div>
+      </section>
+
+      <div class="shot-prompt hidden" id="shotPrompt">
+        <b id="promptTitle">TAP TO TOSS</b>
+        <span id="promptSub">then swipe at the top</span>
+      </div>
+
+      <section class="screen overlay-screen hidden" id="pauseScreen">
+        <div class="panel compact-panel"><p class="eyebrow">MATCH PAUSED</p><h2>CATCH YOUR<br />BREATH.</h2><button class="primary-button" id="resumeButton">RESUME</button><button class="text-button" id="restartButton">RESTART MATCH</button></div>
+      </section>
+
+      <section class="screen overlay-screen hidden" id="resultScreen">
+        <div class="panel compact-panel"><p class="eyebrow" id="resultEyebrow">MATCH POINT</p><h2 id="resultTitle">YOU WIN.</h2><p class="result-score" id="resultScore">11 — 7</p><button class="primary-button" id="againButton">PLAY AGAIN</button><button class="text-button" id="menuButton">MAIN MENU</button></div>
+      </section>
+
+      <div class="portrait-warning"><b>ROTATE TO PLAY</b><span>Baseline Swipe works best in landscape.</span></div>
+      <div class="toast hidden" id="toast"></div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
